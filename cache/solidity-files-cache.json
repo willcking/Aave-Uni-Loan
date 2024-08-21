@@ -2,17 +2,18 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\CODE\\solidity\\Aave-Uni-Loan\\contracts\\AaveApe.sol": {
-      "lastModificationDate": 1724081150552,
-      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "lastModificationDate": 1724250315109,
+      "contentHash": "855c9c73539e2ab9af3b9f8664efa296",
       "sourceName": "contracts/AaveApe.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -29,22 +30,36 @@
           }
         }
       },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
+      "imports": [
+        "./AaveUniswapBase.sol",
+        "./interfaces/uniswap-v3/IUniswapV3Factory.sol",
+        "./interfaces/uniswap-v3/IUniswapV3Pool.sol",
+        "./interfaces/aave-v3/IAToken.sol",
+        "./libraries/ReserveConfiguration.sol",
+        "./libraries/TickMath.sol",
+        "./libraries/WadRayMath.sol",
+        "./libraries/PercentageMath.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AaveApe"
+      ]
     },
     "D:\\CODE\\solidity\\Aave-Uni-Loan\\contracts\\AaveUniswapBase.sol": {
       "lastModificationDate": 1724081147737,
       "contentHash": "9abbb9b31851db4115f723af7ab67dbb",
       "sourceName": "contracts/AaveUniswapBase.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -83,13 +98,14 @@
       "contentHash": "6b426f7aee674027a14495ee833f6707",
       "sourceName": "contracts/interfaces/aave-v3/IPool.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -122,13 +138,14 @@
       "contentHash": "f2533a963a0fedb2cd341304824cb376",
       "sourceName": "contracts/libraries/SafeMath.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -158,13 +175,14 @@
       "contentHash": "68b319a0f507812f068e6675a3ea8f6e",
       "sourceName": "contracts/interfaces/aave-v3/IPoolDataProvider.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -196,13 +214,14 @@
       "contentHash": "c8c81eae8e8f300f244888662b2ef129",
       "sourceName": "contracts/libraries/DataTypes.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -232,13 +251,14 @@
       "contentHash": "2dfccf7c2125992a0c7282e5acf255a9",
       "sourceName": "contracts/interfaces/aave-v3/IPoolAddressesProvider.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -268,13 +288,14 @@
       "contentHash": "36eaee00e7538b0f2d7dd57197c363b4",
       "sourceName": "contracts/interfaces/aave-v3/IPriceOracleGetter.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -304,13 +325,14 @@
       "contentHash": "3d6c1bffa0562bc5f05fb509163ce975",
       "sourceName": "contracts/interfaces/uniswap-v3/ISwapRouter.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -342,13 +364,14 @@
       "contentHash": "7d9ab9378f2de0b4d895e719b98a70db",
       "sourceName": "contracts/interfaces/IERC20.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -378,13 +401,14 @@
       "contentHash": "a8ba2d37b0107911ae0e3b0e123cbd83",
       "sourceName": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -414,13 +438,14 @@
       "contentHash": "8ca7dfefbedf1008066ed1bd1c13a6c7",
       "sourceName": "contracts/interfaces/balance-v2/IVault.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -453,13 +478,14 @@
       "contentHash": "2121e2f05343195b81186e7dd0161882",
       "sourceName": "contracts/interfaces/balance-v2/IFlashLoanRecipient.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -491,13 +517,14 @@
       "contentHash": "9dbc03511f602612b12b5201b7727fd9",
       "sourceName": "contracts/interfaces/aave-v3/IAToken.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -531,13 +558,14 @@
       "contentHash": "28485b70d5af55cd586903442330af5a",
       "sourceName": "contracts/interfaces/aave-v3/IScaledBalanceToken.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -567,13 +595,14 @@
       "contentHash": "3e43a5568758ce7a5a9df488259b2e98",
       "sourceName": "contracts/interfaces/aave-v3/IInitializableAToken.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -606,13 +635,14 @@
       "contentHash": "0306be452fb7908aa4292c40b08dba88",
       "sourceName": "contracts/interfaces/aave-v3/IAaveIncentivesController.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -642,13 +672,14 @@
       "contentHash": "9afd7d6fa8c1b688e4e0270514480a1a",
       "sourceName": "contracts/libraries/ReserveConfiguration.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -681,13 +712,14 @@
       "contentHash": "24dcff872505edac2d1f05f88e8dfe64",
       "sourceName": "contracts/libraries/Errors.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -717,13 +749,14 @@
       "contentHash": "ab08c1028eea89e57dfc34beac818ebd",
       "sourceName": "contracts/interfaces/aave-v3/IInitializableDebtToken.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -756,13 +789,14 @@
       "contentHash": "52c89f3ea9002c075361276a4630fb1f",
       "sourceName": "contracts/interfaces/aave-v3/IVariableDebtToken.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -795,13 +829,14 @@
       "contentHash": "1ccf9deb81d3b3a305cf5f791035cd9c",
       "sourceName": "contracts/interfaces/aave-v3/IStableDebtToken.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -833,13 +868,14 @@
       "contentHash": "75e51958f257af104ef0e1624e0169dd",
       "sourceName": "contracts/interfaces/IWETH.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -869,13 +905,14 @@
       "contentHash": "a8a1b633376828d2a5cfb4d65b2cf7ad",
       "sourceName": "contracts/interfaces/IWrappedTokenGatewayV3.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -905,13 +942,14 @@
       "contentHash": "9849729642e40d872cf6c023a61df0b6",
       "sourceName": "contracts/interfaces/paraswap/AugustusRegistry.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -941,13 +979,14 @@
       "contentHash": "bce844f8bd43eab4a628983777bd74d8",
       "sourceName": "contracts/interfaces/paraswap/IParaSwapAugustus.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -977,13 +1016,14 @@
       "contentHash": "e782292ddcc9686798caf2ffdf19fced",
       "sourceName": "contracts/interfaces/paraswap/IParaSwapAugustusRegistry.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1013,13 +1053,14 @@
       "contentHash": "27106b1ccdb13fcc44df3713d911d82f",
       "sourceName": "contracts/interfaces/uniswap-v3/IUniswapV3Factory.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1049,13 +1090,14 @@
       "contentHash": "8c1055b9b5bf90dfec34411795c47438",
       "sourceName": "contracts/interfaces/uniswap-v3/IUniswapV3Pool.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1085,13 +1127,14 @@
       "contentHash": "11e2e748076d458e726993b2d20245a4",
       "sourceName": "contracts/libraries/MathUtils.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1123,13 +1166,14 @@
       "contentHash": "2b281c2d3b318e6c24fb3afdbd45f841",
       "sourceName": "contracts/libraries/WadRayMath.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1159,13 +1203,14 @@
       "contentHash": "f5671d731a694c4a0a9f8383ebe0af7e",
       "sourceName": "contracts/libraries/PercentageMath.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [
@@ -1195,13 +1240,14 @@
       "contentHash": "cb324ba1037aa6659940f7803ab6975b",
       "sourceName": "contracts/libraries/TickMath.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.20",
         "settings": {
-          "evmVersion": "paris",
           "optimizer": {
-            "enabled": false,
+            "enabled": true,
             "runs": 200
           },
+          "viaIR": true,
+          "evmVersion": "paris",
           "outputSelection": {
             "*": {
               "*": [

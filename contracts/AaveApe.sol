@@ -76,17 +76,11 @@ contract AaveApe is AaveUniswapBase {
         if (borrowAmountToRepay > debtAmount) {
             borrowAmountToRepay = debtAmount;
         }
-
-        DataTypes.ReserveData memory apeReserve = getAaveAssetReserveData(apeAsset);
-
-        IAToken _aToken = IAToken(apeReserve.aTokenAddress);
-
-        uint256 apeAssetBalance = _aToken.balanceOf(msg.sender);
         
         IUniswapV3Pool pool = getBestPool(apeAsset, borrowAsset);
 
         // consider swap fee, slippage  0.5%    uniswap 3000 是0.3%, aave 3000 是 30% , 50 是 0.5%
-        uint apeAssetToDebtAmount = apeAssetToDebtAmount( apeAsset, borrowAsset, apeAssetBalance);
+        uint256 apeAssetToDebtAmount = getApeAssetToDebtAmount(apeAsset, borrowAsset);
 
         if (apeAssetToDebtAmount < borrowAmountToRepay) {
             borrowAmountToRepay = apeAssetToDebtAmount;
@@ -94,17 +88,19 @@ contract AaveApe is AaveUniswapBase {
 
         bool zeroForOne = apeAsset < borrowAsset; // apeAsset in borrowAsset out
 
-        uint160 sqrtPriceX96 = zeroForOne == true ? TickMath.MIN_SQRT_RATIO + 1 : TickMath.MAX_SQRT_RATIO - 1;
-
+        uint160 sqrtPriceX96 = zeroForOne == true ? TickMath.MIN_SQRT_RATIO + 1 : TickMath.MAX_SQRT_RATIO - 1; 
+            
+        int256 exactOutput = -int256(borrowAmountToRepay);
+        bytes memory params = abi.encode(address(pool), zeroForOne, apeAsset, borrowAsset, interestRateMode, msg.sender, true);
+        
         //flash swap
         (int256 amount0, int256 amount1) = pool.swap(
             address(this), 
             zeroForOne, 
-            -int256(borrowAmountToRepay), //exactOutput
+            exactOutput,
             sqrtPriceX96, 
-            abi.encode(address(pool), zeroForOne, apeAsset, borrowAsset, interestRateMode, msg.sender, true)
+            params
         );
-
         emit Ape(msg.sender, 'flashUnwind', apeAsset, borrowAsset, borrowAmountToRepay, zeroForOne == false ? uint256(amount0) : uint256(amount1), interestRateMode);
     }
 
@@ -178,7 +174,13 @@ contract AaveApe is AaveUniswapBase {
         }
     }
 
-    function apeAssetToDebtAmount(address apeAsset, address borrowAsset, uint256 apeAssetBalance) private returns(uint apeAssetToDebtAmount) {
+    function getApeAssetToDebtAmount(address apeAsset, address borrowAsset) private view returns(uint256 apeAssetToDebtAmount) {
+
+        DataTypes.ReserveData memory apeReserve = getAaveAssetReserveData(apeAsset);
+
+        IAToken _aToken = IAToken(apeReserve.aTokenAddress);
+
+        uint256 apeAssetBalance = _aToken.balanceOf(msg.sender);
 
         uint256 apeAssetPrice = getPriceOracle().getAssetPrice(apeAsset); 
         (uint256 apeAssetDecimals, , , , , , , , , ) = getProtocolDataProvider().getReserveConfigurationData(apeAsset);
@@ -186,7 +188,7 @@ contract AaveApe is AaveUniswapBase {
         uint256 borrowAssetPrice = getPriceOracle().getAssetPrice(borrowAsset); 
         (uint256 borrowAssetDecimals, , , , , , , , , ) = getProtocolDataProvider().getReserveConfigurationData(borrowAsset);
 
-        uint apeAssetToDebtAmount = (apeAssetBalance * apeAssetPrice * 10**borrowAssetDecimals) / (10**apeAssetDecimals * borrowAssetPrice);
+        apeAssetToDebtAmount = (apeAssetBalance * apeAssetPrice * 10**borrowAssetDecimals) / (10**apeAssetDecimals * borrowAssetPrice);
 
         return apeAssetToDebtAmount;
     }

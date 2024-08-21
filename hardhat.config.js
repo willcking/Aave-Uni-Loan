@@ -3,7 +3,20 @@ require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = { 
-  solidity: "0.8.24",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.20",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200
+          },
+          viaIR: true, // 启用通过IR编译
+        },
+      },
+    ]
+  },
 
   defaultNetwork: "hardhat",
   networks: {
